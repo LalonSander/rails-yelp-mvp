@@ -9,13 +9,19 @@
 
           <p class="mb-2"><strong>Address:</strong> <%= @restaurant.address %></p>
           <p class="mb-2"><strong>Total Reviews:</strong> <%= @restaurant.reviews.count %></p>
+          <p class="mb-2"><strong>Average Rating:</strong> <%= (('<i class="fa-solid fa-star"></i>' * @restaurant.rating ) + ('<i class="fa-regular fa-star"></i>' * (5 - @restaurant.rating))).html_safe %></p>
+
+          <div class="col-8 p-5">
+            <h5>Write a review</h5>
+            <%= render "reviews/form" %>
+          </div>
 
           <% if @restaurant.reviews.any? %>
             <h5 class="mt-4">Reviews:</h5>
             <ul class="list-group">
               <% @restaurant.reviews.each do |review| %>
-                <li class="list-group-item">
-                  <strong>Rating:</strong> <%= review.rating %> / 5 <br>
+                <li class="list-group-item mb-0">
+                  <strong>Rating:</strong> <%= (('<i class="fa-solid fa-star"></i>' * review.rating) + ('<i class="fa-regular fa-star"></i>' * (5 - review.rating))).html_safe %> <br>
                   <%= review.content %>
                 </li>
               <% end %>
@@ -23,8 +29,8 @@
           <% else %>
             <p class="text-muted">No reviews yet.</p>
           <% end %>
-          <%= link_to "Write a review", new_restaurant_review_path(@restaurant), class: "btn btn-secondary" %>
-          <%= link_to "Back to restaurants", restaurants_path, class: "btn btn-primary" %>
+
+          <%= link_to "Back to restaurants", restaurants_path, class: "btn btn-secondary mt-4" %>
         </div>
       </div>
 

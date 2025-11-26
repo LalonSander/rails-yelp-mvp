@@ -3,6 +3,5 @@
     <%= f.input :rating, collection: (0..5).to_a %>
     <div class="d-flex justify-content-between">
       <%= f.button :submit, "Submit Review", class: "btn btn-primary" %>
-      <%= link_to "Cancel", request.referer || restaurant_path(restaurant), class: "btn btn-secondary" %>
     </div>
   <% end %>

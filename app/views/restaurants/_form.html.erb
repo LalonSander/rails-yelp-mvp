@@ -4,7 +4,7 @@
     <%= f.input :phone_number %>
     <%= f.input :category, collection: %w[chinese italian japanese french belgian].map { |c| [c.capitalize, c] } %>
     <div class="d-flex justify-content-between">
-      <%= f.button :submit, "Submit Review", class: "btn btn-primary" %>
+      <%= f.button :submit, "Add Restaurant", class: "btn btn-primary" %>
       <%= link_to "Cancel", request.referer || restaurants_path, class: "btn btn-secondary" %>
     </div>
   <% end %>
